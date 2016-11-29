@@ -18,6 +18,9 @@ function init(data) {
 	var height = width*0.6;					
 	var margin = {top: 0, right: 0, bottom: 0, left:0};
 
+
+	d3.select("#graphicContainer svg").remove();
+
 	var svg = d3.select("#graphicContainer").append("svg")
 				.attr("width", width + margin.left + margin.right)
 				.attr("height", height + margin.top + margin.bottom)
@@ -33,7 +36,8 @@ d3.loadData()
     .json('states',"data/au-states.json")
     .onload(function(data) {
     	init(data);
-    	var lastWidth = document.querySelector("#ratio-graph").getBoundingClientRect().width
+    	var lastWidth = document.querySelector("#graphicContainer").getBoundingClientRect().width
+    	var to=null;
     	window.addEventListener('resize', function() {
 	    	var thisWidth = document.querySelector("#graphicContainer").getBoundingClientRect().width
 		    if (lastWidth != thisWidth) {

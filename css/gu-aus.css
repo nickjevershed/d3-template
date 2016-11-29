@@ -30,7 +30,6 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 		
-
 body {
 	margin:0;
 	line-height:1.5;
@@ -66,6 +65,26 @@ ul {
 	-webkit-margin-before: 0;
 	-webkit-margin-after: 0;
 	-webkit-padding-start:0;
+}
+
+p {
+	margin:0;
+}
+
+h1 {
+	font-family: "Guardian Egyptian Web",Georgia,serif;
+	font-size: 32px;
+	font-weight: normal;
+	color: black;
+	line-height: 38px;
+}
+
+h2 {
+	font-family: "Guardian Egyptian Web",Georgia,serif;
+	font-size: 1.2rem;
+	font-weight: normal;
+	color: black;
+	font-weight:900;
 }
 
 .chartTitle {
@@ -107,6 +126,10 @@ ul {
 	color:#767676;
 	font-weight: bold;
 	font-family:'Guardian Text Sans Web', 'Agate Sans', sans-serif;
+}
+
+#graphicContainer {
+	position:relative;
 }
 
 .center {
@@ -170,5 +193,57 @@ text-align: center;
 	float:left;
 }
 
+.btns-share .btn-tt {
+	background: #bdbdbd url(../img/twitterIcon.svg) no-repeat center center;
+}
 
+.btns-share .btn-tt:hover {
+	background-color: #03b3ee;
+}
+		
+.btns-share .btn-fb {
+	background: #bdbdbd url(../img/facebookIcon.svg) no-repeat center center;
+}
 
+.btns-share .btn-fb:hover {
+    background-color: #3067a3;
+}
+
+.btns-share button {
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 9000px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: button;
+    text-transform: none;
+    overflow: visible;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+}
+
+#loading {
+	font-family: "Guardian Egyptian Web",Georgia,serif;
+	font-size:1.1rem;
+	color:#000;
+}
+
+#outer-wrapper {
+	position: relative;
+}
+
+#outer-wrapper.immersive {
+	max-width:1300px;
+}
+
+#outer-wrapper.inline {
+	max-width:620px;
+}
+
+#outer-wrapper.showcase {
+	max-width:620px;
+}
