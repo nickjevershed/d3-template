@@ -1,3 +1,5 @@
+//Guardian-specific responsive iframe function
+
 iframeMessenger.enableAutoResize();
 
 function init(data) {
@@ -18,6 +20,9 @@ function init(data) {
 	var height = width*0.6;					
 	var margin = {top: 0, right: 0, bottom: 0, left:0};
 
+	width = width - margin.left - margin.right,
+    height = height - margin.top - margin.bottom;
+   
 
 	d3.select("#graphicContainer svg").remove();
 
@@ -31,20 +36,20 @@ function init(data) {
 
 } // end init
 
-d3.loadData()
-    .csv('things',"data/thing-data.csv")
-    .json('states',"data/au-states.json")
-    .onload(function(data) {
-    	init(data);
-    	var lastWidth = document.querySelector("#graphicContainer").getBoundingClientRect().width
-    	var to=null;
-    	window.addEventListener('resize', function() {
-	    	var thisWidth = document.querySelector("#graphicContainer").getBoundingClientRect().width
-		    if (lastWidth != thisWidth) {
-		      window.clearTimeout(to);
-		      to = window.setTimeout(init(data), 500)
-		    }
-  		})
-
-});
-
+var q = d3.queue()
+        .defer(d3.csv, "data/thing-data.csv")
+        .defer(d3.json, "data/au-states.json")
+        .awaitAll(function(error, results) {
+			init(results[0],results[1])
+			var to=null
+			var lastWidth = document.querySelector("#graphicContainer").getBoundingClientRect()
+			window.addEventListener('resize', function() {
+				var thisWidth = document.querySelector("#graphicContainer").getBoundingClientRect()
+				if (lastWidth != thisWidth) {
+					window.clearTimeout(to);
+					to = window.setTimeout(function() {
+						    makeMap(results[0],results[1])
+						}, 500)
+				}
+			})
+        });
